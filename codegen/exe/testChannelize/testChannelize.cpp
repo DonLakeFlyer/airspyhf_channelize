@@ -242,12 +242,12 @@ void testChannelize()
   fflush(stdout);
   coder::tic();
   while (1) {
-    creal32_T complexBuffer[1024];
+    creal32_T complexBuffer[2048];
     double intIn;
     int qY;
     int yk;
     // dataReceived = udpReceive.read();
-    udpReceiverRead(udpReceive, &complexBuffer[0], 1024.0);
+    udpReceiverRead(udpReceive, &complexBuffer[0], 2048.0);
     if (frameIndex == 1.0) {
       double topDigits;
       b_this.init();

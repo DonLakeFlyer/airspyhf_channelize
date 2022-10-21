@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  channelize:
+    image: channelize:#VERSION#
+    container_name: channelize
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - '/data/app/channelize/data:/data'
+    devices:
+      - "/dev/bus/usb"

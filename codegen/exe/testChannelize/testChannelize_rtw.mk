@@ -16,12 +16,12 @@
 # PRODUCT_NAME            Name of the system to build
 # MAKEFILE                Name of this makefile
 
-PRODUCT_NAME              = testChannelize
+PRODUCT_NAME              = channelize
 MAKEFILE                  = testChannelize_rtw.mk
-MATLAB_ROOT               = /home/parallels/repos/matlab-extern
+MATLAB_ROOT               = /matlab-extern
 MATLAB_BIN                = /usr/local/MATLAB/R2022b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/glnxa64
-START_DIR                 = /home/parallels/repos/airspyhf_channelize
+START_DIR                 = /airspyhf_channelize
 TGT_FCN_LIB               = ISO_C++11
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -193,7 +193,7 @@ LIBS =
 ## SYSTEM LIBRARIES
 ###########################################################################
 
-SYSTEM_LIBS =  -L"$(MATLAB_ROOT)/sys/os/glnxa64" -lm -lstdc++ -lgomp
+SYSTEM_LIBS =  -L"/usr/lib/aarch64-linux-gnu" -lm -lstdc++ -lgomp
 
 ###########################################################################
 ## ADDITIONAL TOOLCHAIN FLAGS
@@ -393,7 +393,8 @@ FFTImplementationCallback.o : $(START_DIR)/codegen/exe/testChannelize/FFTImpleme
 ## DEPENDENCIES
 ###########################################################################
 
-$(ALL_OBJS) : rtw_proj.tmw $(MAKEFILE)
+#$(ALL_OBJS) : rtw_proj.tmw $(MAKEFILE)
+$(ALL_OBJS) : $(MAKEFILE)
 
 
 ###########################################################################

@@ -152,7 +152,7 @@ end
 
 %% SETUP UDP DATA INPUT OBJECT
 airspyFrameSamples      = 1024;                     % Airspy sends out 1024 complex samples in each udp packet
-udpReceiveBufferSize    = airspyFrameSamples;
+udpReceiveBufferSize    = airspyFrameSamples * 2;
 udpReceive              = udpReceiverSetup('127.0.0.1', udpReceivePort, udpReceiveBufferSize, airspyFrameSamples);
 
 %% SETUP UDP OUTPUT OBJECTS
