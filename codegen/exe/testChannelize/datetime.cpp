@@ -1,0 +1,93 @@
+//
+// Trial License - for use to evaluate programs for possible purchase as
+// an end-user only.
+// File: datetime.cpp
+//
+// MATLAB Coder version            : 5.5
+// C/C++ source code generated on  : 21-Oct-2022 10:06:11
+//
+
+// Include Files
+#include "datetime.h"
+#include "getLocalTime.h"
+#include "plus.h"
+#include <cmath>
+
+// Function Definitions
+//
+// Arguments    : void
+// Return Type  : void
+//
+namespace coder {
+void datetime::init()
+{
+  double b_second;
+  double c_tm_hour;
+  double c_tm_min;
+  double c_tm_mon;
+  double c_tm_year;
+  double check;
+  double fracSecs;
+  double shi;
+  boolean_T expl_temp;
+  internal::time::getLocalTime(&check, &b_second, &c_tm_min, &c_tm_hour, &shi,
+                               &c_tm_mon, &c_tm_year, &expl_temp);
+  fracSecs = check / 1.0E+6;
+  check =
+      (((((c_tm_year + c_tm_mon) + shi) + c_tm_hour) + c_tm_min) + b_second) +
+      fracSecs;
+  if ((!std::isinf(check)) && (!std::isnan(check))) {
+    creal_T ahi;
+    double wholeSecsFromMillis;
+    if ((c_tm_mon < 1.0) || (c_tm_mon > 12.0)) {
+      wholeSecsFromMillis = std::floor((c_tm_mon - 1.0) / 12.0);
+      c_tm_year += wholeSecsFromMillis;
+      c_tm_mon = ((c_tm_mon - 1.0) - wholeSecsFromMillis * 12.0) + 1.0;
+    }
+    if (c_tm_mon < 3.0) {
+      c_tm_year--;
+      c_tm_mon += 9.0;
+    } else {
+      c_tm_mon -= 3.0;
+    }
+    wholeSecsFromMillis =
+        ((((((365.0 * c_tm_year + std::floor(c_tm_year / 4.0)) -
+             std::floor(c_tm_year / 100.0)) +
+            std::floor(c_tm_year / 400.0)) +
+           std::floor((153.0 * c_tm_mon + 2.0) / 5.0)) +
+          shi) +
+         60.0) -
+        719529.0;
+    check = 1.34217729E+8 * wholeSecsFromMillis;
+    check -= check - wholeSecsFromMillis;
+    shi = wholeSecsFromMillis * 8.64E+7;
+    check = (wholeSecsFromMillis - check) * 8.64E+7 + (check * 8.64E+7 - shi);
+    if (std::isnan(check)) {
+      check = 0.0;
+    }
+    if ((fracSecs < 0.0) || (fracSecs >= 1000.0)) {
+      wholeSecsFromMillis = std::floor(fracSecs / 1000.0);
+      b_second += wholeSecsFromMillis;
+      fracSecs -= wholeSecsFromMillis * 1000.0;
+    }
+    ahi.re = shi;
+    ahi.im = check;
+    data = matlab::internal::coder::doubledouble::plus(
+        matlab::internal::coder::doubledouble::plus(
+            matlab::internal::coder::doubledouble::plus(
+                ahi, (60.0 * c_tm_hour + c_tm_min) * 60000.0),
+            b_second * 1000.0),
+        fracSecs);
+  } else {
+    data.re = check;
+    data.im = 0.0;
+  }
+}
+
+} // namespace coder
+
+//
+// File trailer for datetime.cpp
+//
+// [EOF]
+//
