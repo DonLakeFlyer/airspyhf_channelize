@@ -18,6 +18,8 @@ cfg.CustomSource  = [curr_dir,'/CustomMains/main.c'];
 %cfg.GenCodeOnly = true;
 cfg.GenerateReport = true;
 cfg.ReportPotentialDifferences = false;
+cfg.TargetLang = 'C++';
+cfg.RuntimeChecks = true;
 
 %% Define argument types for entry-point 'airspyhf_channelize'.
 ARGS = cell(1,1);
