@@ -6,7 +6,7 @@ WORKDIR /airspyhf_channelize
 COPY udp.cpp udp.h .
 WORKDIR /airspyhf_channelize/codegen/exe/testChannelize
 COPY codegen/exe/testChannelize .
-RUN make -f testChannelize_rtw.mk
+RUN make -j12 -f testChannelize_rtw.mk
 
 FROM arm64v8/ubuntu as release-stage
 
