@@ -4,7 +4,7 @@
 // File: testChannelize.cpp
 //
 // MATLAB Coder version            : 5.5
-// C/C++ source code generated on  : 21-Oct-2022 10:06:11
+// C/C++ source code generated on  : 21-Oct-2022 17:09:12
 //
 
 // Include Files
@@ -291,8 +291,8 @@ void testChannelize()
     }
     // Used to keep a running estimated of the expected frame
     // size to help identifiy subsize frames received.
-    if (expectedFrameSize != 1024.0) {
-      expectedFrameSize = std::round((expectedFrameSize + 1024.0) / 2.0);
+    if (expectedFrameSize != 2048.0) {
+      expectedFrameSize = std::round((expectedFrameSize + 2048.0) / 2.0);
     }
     dataBufferFIFO.write(complexBuffer);
     // Call with (:) to help coder realize it is a single channel

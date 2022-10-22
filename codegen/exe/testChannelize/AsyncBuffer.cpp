@@ -4,7 +4,7 @@
 // File: AsyncBuffer.cpp
 //
 // MATLAB Coder version            : 5.5
-// C/C++ source code generated on  : 21-Oct-2022 10:06:11
+// C/C++ source code generated on  : 21-Oct-2022 17:09:12
 //
 
 // Include Files
@@ -238,13 +238,13 @@ void AsyncBuffer::write()
 }
 
 //
-// Arguments    : const creal32_T in[1024]
+// Arguments    : const creal32_T in[2048]
 // Return Type  : void
 //
-void AsyncBuffer::write(const creal32_T in[1024])
+void AsyncBuffer::write(const creal32_T in[2048])
 {
-  static const short inSize[8]{1024, 1, 1, 1, 1, 1, 1, 1};
-  static const short iv[8]{1024, 1, 1, 1, 1, 1, 1, 1};
+  static const short inSize[8]{2048, 1, 1, 1, 1, 1, 1, 1};
+  static const short iv[8]{2048, 1, 1, 1, 1, 1, 1, 1};
   internal::AsyncBuffercgHelper *obj;
   array<int, 2U> bc;
   array<int, 2U> y;
@@ -298,10 +298,10 @@ void AsyncBuffer::write(const creal32_T in[1024])
   wPtr = pBuffer.WritePointer;
   rPtr = pBuffer.ReadPointer;
   qY = 0;
-  if (wPtr > 2147482623) {
+  if (wPtr > 2147481599) {
     b_qY = MAX_int32_T;
   } else {
-    b_qY = wPtr + 1024;
+    b_qY = wPtr + 2048;
   }
   c = b_qY - 1;
   if (b_qY - 1 > 98305) {

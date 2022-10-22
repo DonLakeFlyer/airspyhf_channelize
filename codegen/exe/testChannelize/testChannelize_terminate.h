@@ -4,7 +4,7 @@
 // File: testChannelize_terminate.h
 //
 // MATLAB Coder version            : 5.5
-// C/C++ source code generated on  : 21-Oct-2022 10:06:11
+// C/C++ source code generated on  : 21-Oct-2022 17:09:12
 //
 
 #ifndef TESTCHANNELIZE_TERMINATE_H

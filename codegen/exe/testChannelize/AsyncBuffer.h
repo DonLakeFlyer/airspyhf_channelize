@@ -4,7 +4,7 @@
 // File: AsyncBuffer.h
 //
 // MATLAB Coder version            : 5.5
-// C/C++ source code generated on  : 21-Oct-2022 10:06:11
+// C/C++ source code generated on  : 21-Oct-2022 17:09:12
 //
 
 #ifndef ASYNCBUFFER_H
@@ -23,7 +23,7 @@ class AsyncBuffer {
 public:
   void write();
   void read();
-  void write(const creal32_T in[1024]);
+  void write(const creal32_T in[2048]);
   void matlabCodegenDestructor();
   ~AsyncBuffer();
   AsyncBuffer();
