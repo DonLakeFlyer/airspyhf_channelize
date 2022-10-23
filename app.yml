@@ -9,3 +9,6 @@ services:
       - '/data/app/channelize/data:/data'
     devices:
       - "/dev/bus/usb"
+    logging:
+      options:
+        max-size: "100k"

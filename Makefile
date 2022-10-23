@@ -12,7 +12,7 @@ artifactPath=$(shell pwd)/output/$(appName)_$(version).auterionos
 endif
 
 build-docker:
-	docker build --no-cache --platform=$(architecture) . -t $(appName):$(version)
+	docker build --platform=$(architecture) . -t $(appName):$(version)
 
 build: build-docker Dockerfile codegen/exe/testChannelize/testChannelize_rtw.mk
 	mkdir -p output
