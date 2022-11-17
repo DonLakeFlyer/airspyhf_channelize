@@ -211,10 +211,6 @@ while 1 %<= %floor((recordingDurationSec-1)*rawSampleRate/rawFrameLength)
             state = 'run';
             dataReceived = udpReceive();
             if (~isempty(dataReceived))               
-                if frameIndex == 1
-                    bufferTimeStamp = round(10^3*posixtime(datetime('now')));
-                    bufferTimeStamp4Sending = int2singlecomplex(bufferTimeStamp);
-                end
                 sampsReceived = numel(dataReceived);
                 totalSampsReceived = totalSampsReceived + sampsReceived;
                 %Used to keep a running estimated of the expected frame
@@ -236,7 +232,7 @@ while 1 %<= %floor((recordingDurationSec-1)*rawSampleRate/rawFrameLength)
                     tic;
                     y = channelizer(read(dataBufferFIFO,samplesAtFlush));
                     for i = 1:nChannels
-                    	data = [bufferTimeStamp4Sending; y(:,i)];
+                    	data = y(:,i);
                         udps{i}(data)
                     end
                     time2Channelize = toc;
